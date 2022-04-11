@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Setup Ruby 2.7
+      - name: Setup Ruby 3.7
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.2
@@ -56,6 +56,10 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           yarn install --frozen-lockfile
+      
+      - name: Migrate database
+        run:  bin/rails db:migrate
+      
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
