@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       sqlite:
-        image: sqlite:12
+        image: postgres:12
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
