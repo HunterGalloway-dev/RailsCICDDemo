@@ -25,4 +25,4 @@ default: &default
 
 development:
   <<: *default
-  database: dev_db
+  database: test
